@@ -3,8 +3,28 @@ const http = require('http');
 
 function requestController(req, res) {
   console.log('Bienvenidos al curso');
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('¡Bienvenidos al curso desde Render!');
+  res.writeHead(200, { 'Content-Type': 'text/html' });
+  res.end(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Bienvenido</title>
+      <style>
+        h1 {
+          color: navy;
+          text-align: center;
+        }
+        p {
+          color: green;
+        }
+      </style>
+    </head>
+    <body>
+      <h1>¡Bienvenidos al curso desde Render!</h1>
+      <p>Este es un texto con un poco de estilo.</p>
+    </body>
+    </html>
+  `);
 }
 
 const server = http.createServer(requestController);
